@@ -4,16 +4,24 @@ namespace BE
 	public class Flower
 	{
 		public string Name { get; set; }
-		public int ID { get; set; }
-		public string growthArea { get; set; }
-		public string description { get; set; }
-		public string Color { get; set; }
+        public int ID { get; set; }
+        public string growthArea { get; set; }
+        public string description { get; set; }
+        public string Color { get; set; }
 
 
 
-		public Flower() { }
+		public Flower(string N, int I, string g, string d, string c)
+        {
+            Name = N;
+            ID = I;
+            growthArea = g;
+            description = d;
+            Color = c;
+        }
+        public Flower() { }
 
-		public Flower(Flower copy)
+        public Flower(Flower copy)
 		{
 			Name = copy.Name;
 			ID = copy.ID;

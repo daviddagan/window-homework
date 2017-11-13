@@ -13,5 +13,6 @@ namespace DAL
         void AddFlower(Flower fl);//function to add a speciality to the XML file by the DAL layer
         void DeleteFlower(int fl);//function to delete a speciality to the XML file by the DAL layer
         void UpdateFlower(Flower fl);//function to update a speciality to the XML file by the DAL layer
+       List <Flower> search(string name);
     }
 }

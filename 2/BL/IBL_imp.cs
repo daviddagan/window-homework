@@ -1,19 +1,30 @@
 ﻿using System;
 using BE;
+using DAL;
+using System.Collections.Generic;
+
 public class IBL_imp : IBL
 {
-	public void AddFlower(Flower fl)
-	{
-		throw new NotImplementedException();
-	}
+    IDAL dal = DAL_Factory.getDAL();
+    public void AddFlower(Flower flower)
+    {
+        dal.AddFlower(flower);
+    }
 
-	public void DeleteFlower(Flower fl)
-	{
-		throw new NotImplementedException();
-	}
+    public void DeleteFlower(int flowerID)
+    {
+        dal.DeleteFlower(flowerID);
+    }
 
-	public void UpdatingFlower(Flower fl)
-	{
-		throw new NotImplementedException();
-	}
+    public void UpdatingFlower(Flower flower)
+    {
+        dal.UpdateFlower(flower);
+    }
+    public List<Flower> search(string name)
+    {
+        List<Flower> listFlowers = dal.search(name);
+        if (listFlowers == null)
+            throw new Exception("The name" + name + "not found in the memory");
+        return listFlowers;
+    }
 }

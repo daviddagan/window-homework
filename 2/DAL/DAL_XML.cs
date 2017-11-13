@@ -5,14 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using BE;
+using System.IO;
 
 namespace DAL
 {
-    class DAL_XML : IDAL
+    public class DAL_XML : IDAL
     {
         XElement FlowerRoot;
         string FlowerPath = @"FlowerXML.xml";
+        public DAL_XML()
+        {
 
+            if (!File.Exists(FlowerPath))
+            {
+                FlowerRoot = new XElement("Flower");
+                FlowerRoot.Save(FlowerPath);
+            }
+        }
+        public List<Flower> search(string name)//search flower with contain the name 'name'.
+        {
+            LoadFlowerFile();
+            List<Flower> flower = new List<Flower>();
+            List<XElement> element;
+            element = (from item in FlowerRoot.Elements()
+                       where 0==(item.Element("Name").Value.ToString().CompareTo(name))////////big problem!!!!!!!!!!!!!!!!!!!!!!
+                       select item).ToList();
+
+          foreach (XElement item in element)
+           {
+              
+                flower.Add(ConvertXElementToFlower(item));
+         }
+            return flower;
+        }
         private void LoadFlowerFile()
         {
             try
@@ -29,7 +54,7 @@ namespace DAL
             LoadFlowerFile();
             if (GetFlower(flower.ID) != null)
             {
-                throw new Exception("Employee with the same ID already exist");
+                throw new Exception("Flower with the same ID already exist");
             }
             FlowerRoot.Add(ConvertFlowerToXElement(flower));
             FlowerRoot.Save(FlowerPath);
@@ -42,7 +67,7 @@ namespace DAL
             {
                 element = (from item in FlowerRoot.Elements()
                            where item.Element("ID").Value == FlowerID.ToString()
-                           select item).First();
+                           select item).FirstOrDefault();
             }
             catch (Exception)
             {
@@ -104,6 +129,6 @@ namespace DAL
             FlowerUpdateElement.ReplaceWith(ConvertFlowerToXElement(flower));
 
             FlowerRoot.Save(FlowerPath);
-            }
+        }
     }
 }

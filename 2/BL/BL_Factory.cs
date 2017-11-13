@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-	class BL_Factory
+	public class BL_Factory
 	{
 		private BL_Factory() { }
 		private static IBL_imp instance = null;
