@@ -26,7 +26,9 @@
                 <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="70"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="36"  Loaded="Image_Loaded" Margin="295,26,-86,0" VerticalAlignment="Top" Width="81"/>
+        <Grid x:Name="ImageGrid" HorizontalAlignment="Left" Height="71" Margin="295,0,-101,0" VerticalAlignment="Top" Width="96">
+            <Image x:Name="image" HorizontalAlignment="Left" Height="36"  Loaded="Image_Loaded" Margin="5,25,0,0" VerticalAlignment="Top" Width="81"/>
+        </Grid>
 
 
     </Grid>
