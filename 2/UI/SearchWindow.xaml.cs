@@ -6,6 +6,7 @@ using BE;
 
 using System;
 using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace UI
 {
@@ -23,6 +24,8 @@ namespace UI
             // ... Create a new BitmapImage.
             BitmapImage b = new BitmapImage();
             b.BeginInit();
+            Image image;
+            ImageSource i;
             string g = "pack://application:,,,/images/flowers.jpg";
             // b.UriSource = new Uri("/2;component/images/flowers.jpg");
             b.UriSource = new Uri(g);
