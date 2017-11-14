@@ -34,7 +34,7 @@ namespace UI
         private void SearchClick(object sender, RoutedEventArgs e)
         {
             string name = textBox.ToString();
-            SearchWindow newWindow = new SearchWindow(name);
+            SearchWindow newWindow = new SearchWindow(name.ToString());
             newWindow.ShowDialog();
             Close();
         }

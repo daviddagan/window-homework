@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:UI"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="UI.SearchWindow"
         mc:Ignorable="d"
-        Title="SearchWindow" Height="300" Width="300" Loaded="Window_Loaded">
+        Title="SearchWindow" Height="300" Width="400" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="flowerViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Flower}, CreateList=True}"/>
     </Window.Resources>
-    <Grid HorizontalAlignment="Left" Height="94" Margin="0,-23,0,0" VerticalAlignment="Top" Width="290" DataContext="{StaticResource flowerViewSource}" RenderTransformOrigin="0.497,0.423">
+    <Grid HorizontalAlignment="Left" Height="292" Margin="0,-23,0,0" VerticalAlignment="Top" Width="290" DataContext="{StaticResource flowerViewSource}" RenderTransformOrigin="0.497,0.423">
         <Grid.RowDefinitions>
 
             <RowDefinition Height="91*"/>
@@ -18,14 +18,16 @@
             <RowDefinition Height="92*"/>
 
         </Grid.RowDefinitions>
-        <DataGrid x:Name="flowerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,29,0,-209" Grid.RowSpan="2">
+        <DataGrid x:Name="flowerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" RowHeight="40" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="White" Grid.RowSpan="2" RenderTransformOrigin="0.509,0.57">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="colorColumn" Binding="{Binding Color}" Header="Color" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding description}" Header="description" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="growthAreaColumn" Binding="{Binding growthArea}" Header="growth Area" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="colorColumn" Binding="{Binding Color}" Header="Color"  Width="70" />
+                <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding description}" Header="description" Width="70"/>
+                <DataGridTextColumn x:Name="growthAreaColumn" Binding="{Binding growthArea}" Header="growth Area" Width="70"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="70"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="36"  Loaded="Image_Loaded" Margin="295,26,-86,0" VerticalAlignment="Top" Width="81"/>
+
 
     </Grid>
 </Window>

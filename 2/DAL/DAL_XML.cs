@@ -24,18 +24,29 @@ namespace DAL
         }
         public List<Flower> search(string name)//search flower with contain the name 'name'.
         {
+            string name1;
+            name1= name;
             LoadFlowerFile();
             List<Flower> flower = new List<Flower>();
             List<XElement> element;
-            element = (from item in FlowerRoot.Elements()
-                       where 0==(item.Element("Name").Value.ToString().CompareTo(name))////////big problem!!!!!!!!!!!!!!!!!!!!!!
-                       select item).ToList();
+            string g;
+            foreach(XElement item in FlowerRoot.Elements() )
+            {
+                g = item.Element("Name").Value;
+                    if (g.Equals(name1.ToString()))
+               // if (g.Equals("calanit"))
+                    // if (item.Element("Name").Value.Equals(name))
+                    flower.Add(ConvertXElementToFlower(item));
+            }
+            //element = (from item in FlowerRoot.Elements()
+            //           where(item.Element("Name").Value.ToString().Equals(name))////////big problem!!!!!!!!!!!!!!!!!!!!!!
+            //           select item).ToList();
 
-          foreach (XElement item in element)
-           {
+         // foreach (XElement item in element)
+         //  {
                 
-                flower.Add(ConvertXElementToFlower(item));
-         }
+         //       flower.Add(ConvertXElementToFlower(item));
+         //}
             return flower;
         }
         private void LoadFlowerFile()

@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using BL;
 using BE;
+
+using System;
+using System.Windows.Media.Imaging;
 
 namespace UI
 {
@@ -23,15 +16,31 @@ namespace UI
     {
 
         IBL bl = BL_Factory.GetInstance();
-      
-        
-        
+
+
+        private void Image_Loaded(object sender, RoutedEventArgs e)
+        {
+            // ... Create a new BitmapImage.
+            BitmapImage b = new BitmapImage();
+            b.BeginInit();
+            string g = "pack://application:,,,/images/flowers.jpg";
+            // b.UriSource = new Uri("/2;component/images/flowers.jpg");
+            b.UriSource = new Uri(g);
+            b.EndInit();
+
+            // ... Get Image reference from sender.
+            var image = sender as Image;
+            // ... Assign Source.
+            image.Source = b;
+        }
+
         public SearchWindow(string name)
         {
             InitializeComponent();
 
-            List<Flower> listFlowers= bl.search(name);
+        List<Flower> listFlowers= bl.search(name);
             flowerDataGrid.DataContext = listFlowers;
+            Grid imageGrid2 = ImageGrid;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -41,5 +50,6 @@ namespace UI
             // Load data by setting the CollectionViewSource.Source property:
             // flowerViewSource.Source = [generic data source]
         }
+
     }
 }
