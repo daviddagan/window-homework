@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
 namespace BE
 {
 	public class Flower
@@ -8,17 +11,20 @@ namespace BE
         public string growthArea { get; set; }
         public string description { get; set; }
         public string Color { get; set; }
+		BitmapImage Image { get; set; }
 
 
-
-		public Flower(string N, int I, string g, string d, string c)
+		public Flower(string n, int i, string g, string d, string c , BitmapImage Im)
         {
-            Name = N;
-            ID = I;
+            Name = n;
+            ID = i;
             growthArea = g;
             description = d;
             Color = c;
-        }
+			Image = Im; 
+
+
+		}
         public Flower() { }
 
         public Flower(Flower copy)
@@ -28,6 +34,7 @@ namespace BE
 			growthArea = copy.growthArea;
 			description = copy.description;
 			Color = copy.Color;
+			Image = copy.Image;
 		}
 
 		public override string ToString()
